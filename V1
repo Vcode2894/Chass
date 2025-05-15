@@ -1,0 +1,423 @@
+import time
+import os
+# - Schwarz Weiß unterteilung: leere felder mit Schwarz=. und Weiß=_/ Figuren Schwarz=Großbuchstaben u. Weiß= Kleinbuchstaben
+# - Funktion mit einer immer aktualisierten boardversion( diese muss dann mit der coordinate_translaton funktion verbunden werden)
+
+def board():
+ line1 = [["T"],["S"],["L"],["D"],["K"],["L"],["S"],["T"]]
+ line2 = [["B"],["B"],["B"],["B"],["B"],["B"],["B"],["B"]]
+ line3 = [["."],["."],["."],["."],["."],["."],["."],["."]]
+ line4 = [["."],["."],["."],["."],["."],["."],["."],["."]]
+ line5 = [["."],["."],["."],["."],["."],["."],["."],["."]]
+ line6 = [["."],["."],["."],["."],["."],["."],["."],["."]]
+ line7 = [["B"],["B"],["B"],["B"],["B"],["B"],["B"],["B"]]
+ line8 = [["T"],["S"],["L"],["D"],["K"],["L"],["S"],["T"]]
+ return line1,line2,line3,line4,line5,line6,line7,line8
+
+
+
+def coordinate_translation(line1,line2,line3,line4,line5,line6,line7,line8):
+ # Aufbau = [1.stelle: linkung(name des Feldes als str),2.stelle: inhalt(Figur oder .), 3.stelle: Position(logische position des einzelnen Feldes)
+
+ coordinatelist1 = [
+  ["a1", line1[0][0], line1[0]], ["a2", line2[0][0], line2[0]], ["a3", line3[0][0], line3[0]],["a4", line4[0][0], line4[0]],
+  ["a5", line5[0][0], line5[0]], ["a6", line6[0][0], line6[0]], ["a7", line7[0][0], line7[0]],["a8", line8[0][0], line8[0]],
+
+  ["b1", line1[1][0], line1[1]], ["b2", line2[1][0], line2[1]], ["b3", line3[1][0], line3[1]],["b4", line4[1][0], line4[1]],
+  ["b5", line5[1][0], line5[1]], ["b6", line6[1][0], line6[1]], ["b7", line7[1][0], line7[1]],["b8", line8[1][0], line8[1]],
+
+  ["c1", line1[2][0], line1[2]], ["c2", line2[2][0], line2[2]], ["c3", line3[2][0], line3[2]],["c4", line4[2][0], line4[2]],
+  ["c5", line5[2][0], line5[2]], ["c6", line6[2][0], line6[2]], ["c7", line7[2][0], line7[2]],["c8", line8[2][0], line8[2]],
+
+  ["d1", line1[3][0], line1[3]], ["d2", line2[3][0], line2[3]], ["d3", line3[3][0], line3[3]],["d4", line4[3][0], line4[3]],
+  ["d5", line5[3][0], line5[3]], ["d6", line6[3][0], line6[3]], ["d7", line7[3][0], line7[3]],["d8", line8[3][0], line8[3]],
+
+  ["e1", line1[4][0], line1[4]], ["e2", line2[4][0], line2[4]], ["e3", line3[4][0], line3[4]],["e4", line4[4][0], line4[4]],
+  ["e5", line5[4][0], line5[4]], ["e6", line6[4][0], line6[4]], ["e7", line7[4][0], line7[4]],["e8", line8[4][0], line8[4]],
+
+  ["f1", line1[5][0], line1[5]], ["f2", line2[5][0], line2[5]], ["f3", line3[5][0], line3[5]],["f4", line4[5][0], line4[5]],
+  ["f5", line5[5][0], line5[5]], ["f6", line6[5][0], line6[5]], ["f7", line7[5][0], line7[5]],["f8", line8[5][0], line8[5]],
+
+  ["g1", line1[6][0], line1[6]], ["g2", line2[6][0], line2[6]], ["g3", line3[6][0], line3[6]],["g4", line4[6][0], line4[6]],
+  ["g5", line5[6][0], line5[6]], ["g6", line6[6][0], line6[6]], ["g7", line7[6][0], line7[6]],["g8", line8[6][0], line8[6]],
+
+  ["h1", line1[7][0], line1[7]], ["h2", line2[7][0], line2[7]], ["h3", line3[7][0], line3[7]],["h4", line4[7][0], line4[7]],
+  ["h5", line5[7][0], line5[7]], ["h6", line6[7][0], line6[7]], ["h7", line7[7][0], line7[7]],["h8", line8[7][0], line8[7]]
+ ]
+
+ return coordinatelist1
+
+
+
+def playerinput_control(coordinatelist):
+ while True:
+  zaehler = 0
+  player_imput1 = input("Geben Sie Iren Spielzug ein (a1-a2). a1 Steht für das\nFeld wo die zu verückende Figur steht und a2 für das Feld auf den Sie die Figur rücken möchten: ")
+  koordinaten = player_imput1.split("-")
+  for i in koordinaten:
+   for list in coordinatelist:
+    if list[0] == i:
+     zaehler =+1
+    else:
+      pass
+  if zaehler <= 0:
+      print("Falsche eingabe. Bitte geben Sie gültige Koordinaten an (a1)")
+  else:
+   return koordinaten
+def Bauer(koordinaten):
+ pass
+""""
+def Turm2(koordinaten, coordinatelist1):
+ cordsListe = []
+ h = 1
+ while True:
+  for i in coordinatelist1()[0]:
+
+  if (koordinaten[0][1] + h) == ".":
+   break
+ # for i in coordinatelist1:
+  # if koordinaten[0] == i:
+  """
+def Turm(koordinaten):
+ l = [["a",1],["b",2],["c",3],["d",4],["e",5],["f",6],["g",7],["h",8]]
+ y = int(koordinaten[0][1])
+ x = 0
+ for i in l:
+  if i[0] == koordinaten[0][1]:
+   x = i[1]
+ s1 = [y + 1,x]
+ s2 = [y + 2,x]
+ s3 = [y + 3,x]
+ s4 = [y + 4,x]
+ s5 = [y + 5,x]
+ s6 = [y + 6,x]
+ s7 = [y + 7,x]
+ s8 = [y + 8,x]
+
+ s9 = [y,x + 1]
+ s10 = [y,x + 2]
+ s11 = [y,x + 3]
+ s12 = [y,x + 4]
+ s13 = [y,x + 5]
+ s14 = [y,x + 6]
+ s15 = [y,x + 7]
+ s16 = [y,x + 8]
+
+ s17 = [y - 1,x]
+ s18 = [y - 2,x]
+ s19 = [y - 3,x]
+ s20 = [y - 4,x]
+ s21 = [y - 5,x]
+ s22 = [y - 6,x]
+ s23 = [y - 7,x]
+ s24 = [y - 8,x]
+
+ s25 = [y ,x - 1]
+ s26 = [y ,x - 2]
+ s27 = [y ,x - 3]
+ s28 = [y ,x - 4]
+ s29 = [y ,x - 5]
+ s30 = [y ,x - 6]
+ s31 = [y ,x - 7]
+ s32 = [y ,x - 8]
+
+ step_list = [s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20,s21,s22,s23,s24,s25,s26,s27,s28,s29,s30,s31,s32]
+ return step_list
+
+def Figur_control(step_list):
+ l = [["a",1],["b",2],["c",3],["d",4],["e",5],["f",6],["g",7],["h",8]]
+ for i in step_list:
+  for s in l:
+   if s[1] == i[1]:
+    i.remove(i[1])
+    i.append(s[1])
+    destination = f"{i[1]}{i[0]}"
+    print(destination)
+
+
+""""
+ try:
+  # Szenario 1
+  for i1 in l:
+   if i1[1] == s1[1]:
+    s1.remove(s1[1])
+    s1.append(i1[0])
+    s_1 = f"{s1[1]}{s1[0]}"
+    #print(s_1)
+  #Szenario2
+  for i2 in l:
+   if i2[1] == s2[1]:
+    s2.remove(s2[1])
+    s2.append(i2[0])
+    s_2 = f"{s2[1]}{s2[0]}"
+    #print(s_2)
+  #Szenario3
+  for i3 in l:
+   if i3[1] == s3[1]:
+    s3.remove(s3[1])
+    s3.append(i3[0])
+    s_3 = f"{s3[1]}{s3[0]}"
+    #print(s_3)
+  # Szenario4
+  for i4 in l:
+   if i4[1] == s4[1]:
+    s4.remove(s4[1])
+    s4.append(i4[0])
+    s_4 = f"{s4[1]}{s4[0]}"
+    #print(s_4)
+  # Szenario 5
+  for i5 in l:
+   if i5[1] == s5[1]:
+    s5.remove(s5[1])
+    s5.append(i5[0])
+    s_5 = f"{s5[1]}{s5[0]}"
+    #print(s_5)
+  # Szenario 6
+  for i6 in l:
+   if i6[1] == s6[1]:
+    s6.remove(s6[1])
+    s6.append(i6[0])
+    s_6 = f"{s6[1]}{s6[0]}"
+    #print(s_6)
+  # Szenario 7
+  for i7 in l:
+   if i7[1] == s7[1]:
+    s7.remove(s7[1])
+    s7.append(i7[0])
+    s_7 = f"{s7[1]}{s7[0]}"
+    #print(s_7)
+  # Szenario 8
+  for i8 in l:
+   if i8[1] == s8[1]:
+    s8.remove(s8[1])
+    s8.append(i8[0])
+    s_8 = f"{s8[1]}{s8[0]}"
+
+
+  if s_1 == koordinaten[1]:
+   #print("Right")
+   return True
+  elif s_2 == koordinaten[1]:
+   return True
+  elif s_3 == koordinaten[1]:
+   return True
+  elif s_4 == koordinaten[1]:
+   return True
+  elif s_5 == koordinaten[1]:
+   return True
+  elif s_6 == koordinaten[1]:
+   return True
+  elif s_7 == koordinaten[1]:
+   return True
+  elif s_8 == koordinaten[1]:
+   return True
+  else:
+   return False
+ except:
+  return False
+"""
+def Laefer(koordinaten):
+ pass
+
+def Dame(koordinaten):
+ pass
+
+def Koenig(koordinaten, coordinatelist1):
+ pass
+
+def Springer(koordinaten):
+ l = [["a",1],["b",2],["c",3],["d",4],["e",5],["f",6],["g",7],["h",8]]
+ y = int(koordinaten[0][1])
+ x = 0
+ for i in l:
+  if i[0] == koordinaten[0][0]:
+   x = i[1]
+ s1 = [y + 2,x + 1]
+ s2 = [y + 2,x - 1]
+ s3 = [y + 1,x + 2]
+ s4 = [y + 1,x - 2]
+ s5 = [y - 2,x + 1]
+ s6 = [y - 2,x - 1]
+ s7 = [y - 1,x + 2]
+ s8 = [y - 1,x - 2]
+ #print(s1,s2,s3,s4,s5,s6,s7,s8)
+ try:
+  # Szenario 1
+  for i1 in l:
+   if i1[1] == s1[1]:
+    s1.remove(s1[1])
+    s1.append(i1[0])
+    s_1 = f"{s1[1]}{s1[0]}"
+    #print(s_1)
+  #Szenario2
+  for i2 in l:
+   if i2[1] == s2[1]:
+    s2.remove(s2[1])
+    s2.append(i2[0])
+    s_2 = f"{s2[1]}{s2[0]}"
+    #print(s_2)
+  #Szenario3
+  for i3 in l:
+   if i3[1] == s3[1]:
+    s3.remove(s3[1])
+    s3.append(i3[0])
+    s_3 = f"{s3[1]}{s3[0]}"
+    #print(s_3)
+  # Szenario4
+  for i4 in l:
+   if i4[1] == s4[1]:
+    s4.remove(s4[1])
+    s4.append(i4[0])
+    s_4 = f"{s4[1]}{s4[0]}"
+    #print(s_4)
+  # Szenario 5
+  for i5 in l:
+   if i5[1] == s5[1]:
+    s5.remove(s5[1])
+    s5.append(i5[0])
+    s_5 = f"{s5[1]}{s5[0]}"
+    #print(s_5)
+  # Szenario 6
+  for i6 in l:
+   if i6[1] == s6[1]:
+    s6.remove(s6[1])
+    s6.append(i6[0])
+    s_6 = f"{s6[1]}{s6[0]}"
+    #print(s_6)
+  # Szenario 7
+  for i7 in l:
+   if i7[1] == s7[1]:
+    s7.remove(s7[1])
+    s7.append(i7[0])
+    s_7 = f"{s7[1]}{s7[0]}"
+    #print(s_7)
+  # Szenario 8
+  for i8 in l:
+   if i8[1] == s8[1]:
+    s8.remove(s8[1])
+    s8.append(i8[0])
+    s_8 = f"{s8[1]}{s8[0]}"
+  if s_1 == koordinaten[1]:
+   #print("Right")
+   return True
+  elif s_2 == koordinaten[1]:
+   return True
+  elif s_3 == koordinaten[1]:
+   return True
+  elif s_4 == koordinaten[1]:
+   return True
+  elif s_5 == koordinaten[1]:
+   return True
+  elif s_6 == koordinaten[1]:
+   return True
+  elif s_7 == koordinaten[1]:
+   return True
+  elif s_8 == koordinaten[1]:
+   return True
+  else:
+   return False
+ except:
+  return False
+
+
+
+
+
+
+def move(koordinaten,coordinatelist,board):
+
+ angesteuertes_feld = koordinaten[0]
+ zielfeld = koordinaten[1]
+ for i in coordinatelist:
+  if i[0] == angesteuertes_feld:
+   ange_feld_info = i[1]
+   ange_feld_position = i[2]
+ for i in coordinatelist:
+  if i[0] == zielfeld:
+   zielfeld_info = i[1]
+   zielfeld_position = i[2]
+ if ange_feld_info == ".":
+  print("Auf diesem Feld steht keine Figur ")
+ elif not zielfeld_info == ".":
+  #Code für das Scmeisen von Figuren (oder fehlermeldung) einfügen
+  pass
+ else:
+  ange_feld_position.remove(ange_feld_info)
+  ange_feld_position.append(".")
+  zielfeld_position.remove(zielfeld_info)
+  zielfeld_position.append(ange_feld_info)
+  return board
+
+def print_board(board,letters):
+ print(" ", end="")
+ for b in letters:
+  print(f"     {b} ", end="")
+ print(f"\n 1 {line1}")
+ print(f" 2 {line2}")
+ print(f" 3 {line3}")
+ print(f" 4 {line4}")
+ print(f" 5 {line5}")
+ print(f" 6 {line6}")
+ print(f" 7 {line7}")
+ print(f" 8 {line8}")
+ return
+
+def wilkommen_grafik():
+ print("========================================\n"
+       "|     W  I  L  L  K  O  M  M  E  N     |\n"
+       "========================================\n"
+       "           ________________             \n"
+       "           | S T A R T  1 |             \n"
+       "           ´´´´´´´´´´´´´´´´             \n")
+ while True:
+  a = input()
+  letters = ("A", "B", "C", "D", "E", "F", "G", "H")
+  if a == "1":
+    print(30 * "\n")
+    time.sleep(1.5)
+    print("Game load:|#.....................................|",15*"\n")
+    time.sleep(0.2)
+    print("Game load:|##....................................|",15*"\n")
+    time.sleep(0.2)
+    print("Game load:|###...................................|",15*"\n")
+    time.sleep(0.2)
+    print("Game load:|####..................................|",15*"\n")
+    time.sleep(1)
+    print("Game load:|###################...................|", 15 * "\n")
+    time.sleep(1)
+    print("Game load:|############################..........|", 15 * "\n")
+    time.sleep(1.1)
+    print("Game load:|######################################|", 25 * "\n")
+    time.sleep(0.7)
+    print("     ========================================\n"
+         "     |         G A M E   S T A R T          |\n"
+         "     ========================================\n")
+    break
+  else:
+   print("Bitte geben Sie zum Starten eine 1 ein")
+ print(" ", end="")
+ for b in letters:
+  print(f"     {b} ", end="")
+  # Buchstaben vor dem Feld anzeigen
+ print(f"\n 1 {line1}\n 2 {line2}\n 3 {line3}\n 4 {line4}\n 5 {line5}\n 6 {line6}\n 7 {line7}\n 8 {line8}\n")
+
+
+#Main_Programm
+line1,line2,line3,line4,line5,line6,line7,line8 = board()
+letters = ("A", "B", "C", "D", "E", "F", "G", "H")
+coordinatelist1 = coordinate_translation(line1,line2,line3,line4,line5,line6,line7,line8)
+wilkommen_grafik()
+
+koordinaten = playerinput_control(coordinate_translation(line1,line2,line3,line4,line5,line6,line7,line8))
+Springer(koordinaten)
+step_list = Turm(koordinaten)
+Figur_control(step_list)
+v = False
+if Springer(koordinaten) == True:
+ #print("Springer erkannt")
+ v = True
+else:
+ print("Falsche Eingabe!.")
+if v == True:
+ move(koordinaten,coordinatelist1,board())
+ print(print_board(board(),letters))
