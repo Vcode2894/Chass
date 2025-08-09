@@ -52,7 +52,7 @@ def coordinate_translation(line1,line2,line3,line4,line5,line6,line7,line8):
 def playerinput_control(coordinatelist):
  while True:
   zaehler = 0
-  player_imput1 = input("Geben Sie Iren Spielzug ein (a1-a2). a1 Steht für das\nFeld wo die zu verückende Figur steht und a2 für das Feld auf den Sie die Figur rücken möchten: ")
+  player_imput1 = input("Geben Sie Ihren Spielzug ein (a1-a2). a1 Steht für das\nFeld wo die zu verückende Figur steht und a2 für das Feld auf den Sie die Figur rücken möchten: ")
   koordinaten = player_imput1.split("-")
   for i in koordinaten:
    for list in coordinatelist:
@@ -360,7 +360,6 @@ def print_board(board,letters):
  print(f" 6 {line6}")
  print(f" 7 {line7}")
  print(f" 8 {line8}")
- return
 
 def wilkommen_grafik():
  print("========================================\n"
@@ -418,6 +417,8 @@ if Springer(koordinaten) == True:
  v = True
 else:
  print("Falsche Eingabe!.")
-if v == True:
+if v:
  move(koordinaten,coordinatelist1,board())
  print(print_board(board(),letters))
+if not v:
+ pass
