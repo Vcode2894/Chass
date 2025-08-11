@@ -64,6 +64,7 @@ def playerinput_control(coordinatelist):
       print("Falsche eingabe. Bitte geben Sie gültige Koordinaten an (a1)")
   else:
    return koordinaten
+
 def Bauer(koordinaten):
  pass
 """"
@@ -124,14 +125,21 @@ def Turm(koordinaten):
  step_list = [s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20,s21,s22,s23,s24,s25,s26,s27,s28,s29,s30,s31,s32]
  return step_list
 
-def Figur_control(step_list):
+def Figur_control(step_list,koordinaten):
  l = [["a",1],["b",2],["c",3],["d",4],["e",5],["f",6],["g",7],["h",8]]
  for i in step_list:
   for s in l:
-   if s[1] == i[1]:
-    i.remove(i[1])
-    i.append(s[1])
+   if s[1] == i[1]: # prüft ob szenario (s...) im überhaupt im Spielfeld ist
+  #  i.remove(i[1])
+  #  i.append(s[1])
     destination = f"{i[1]}{i[0]}"
+    for e in l:
+     if e[0] == koordinaten[0][0]:
+      x = e[1]
+    if i == koordinaten[1]:
+     pass
+    else:
+     pass
     print(destination)
 
 
@@ -411,7 +419,7 @@ wilkommen_grafik()
 koordinaten = playerinput_control(coordinate_translation(line1,line2,line3,line4,line5,line6,line7,line8))
 Springer(koordinaten)
 step_list = Turm(koordinaten)
-Figur_control(step_list)
+Figur_control(step_list,koordinaten)
 v = False
 if Springer(koordinaten) == True:
  print("Springer erkannt")
