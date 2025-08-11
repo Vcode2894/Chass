@@ -240,6 +240,7 @@ def Springer(koordinaten):
  s6 = [y - 2,x - 1]
  s7 = [y - 1,x + 2]
  s8 = [y - 1,x - 2]
+
  #print(s1,s2,s3,s4,s5,s6,s7,s8)
  try:
   # Szenario 1
@@ -413,12 +414,12 @@ step_list = Turm(koordinaten)
 Figur_control(step_list)
 v = False
 if Springer(koordinaten) == True:
- #print("Springer erkannt")
+ print("Springer erkannt")
  v = True
 else:
  print("Falsche Eingabe!.")
 if v:
  move(koordinaten,coordinatelist1,board())
- print(print_board(board(),letters))
+ print_board(board(),letters)
 if not v:
- pass
+ print("Leere Felder können nicht verückt werden!")
