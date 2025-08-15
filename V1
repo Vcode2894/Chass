@@ -74,11 +74,16 @@ def Turm2(koordinaten, coordinatelist1):
  while True:
   for i in coordinatelist1()[0]:
 
-  if (koordinaten[0][1] + h) == ".":
+  if
+  (koordinaten[0][1] + h) == ".":
    break
  # for i in coordinatelist1:
   # if koordinaten[0] == i:
   """
+
+
+
+
 def Turm(koordinaten):
  l = [["a",1],["b",2],["c",3],["d",4],["e",5],["f",6],["g",7],["h",8]]
  y = int(koordinaten[0][1])
@@ -126,21 +131,34 @@ def Turm(koordinaten):
  return step_list
 
 def Figur_control(step_list,koordinaten):
+ tmp01 = True
  l = [["a",1],["b",2],["c",3],["d",4],["e",5],["f",6],["g",7],["h",8]]
  for i in step_list:
-  for s in l:
-   if s[1] == i[1]: # prüft ob szenario (s...) im überhaupt im Spielfeld ist
+   for s in l:
+    if s[1] == i[1]: # prüft ob szenario (s...) im überhaupt im Spielfeld ist
   #  i.remove(i[1])
   #  i.append(s[1])
-    destination = f"{i[1]}{i[0]}"
-    for e in l:
-     if e[0] == koordinaten[0][0]:
-      x = e[1]
-    if i == koordinaten[1]:
-     pass
-    else:
-     pass
-    print(destination)
+    #destination = f"{i[1]}{i[0]}"
+     print(koordinaten)
+     for e in l:
+      if e[0] == koordinaten[0][0]:
+       source = f"{e[1]}{i[0]}"
+       if e[0] == koordinaten[1][0]:
+         destination = f"{e[1]}{koordinaten[1][1]}"
+         tem01 = False
+      elif e[0] == koordinaten[1][0] and tmp01 == True:
+       destination = f"{e[1]}{koordinaten[1][1]}"
+      num_koordinaten = []
+      num_koordinaten.append(int(source))
+      num_koordinaten.append(int(destination))
+      print(num_koordinaten)
+      print(i)
+      if i == num_koordinaten:
+       print(f"{i}, {num_koordinaten}")
+      else:
+       print(0)
+     print(f"{source}, {destination}")
+     #print(f"---------------------{i}----------------------------")
 
 
 """"
